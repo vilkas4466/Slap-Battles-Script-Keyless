@@ -1,0 +1,271 @@
+local ui = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+ui:Notify({Title = "Bac0n S1cripts Welcome's u",Content = "Welcome Player Thanks For Using This Script :)",Duration = 10,})
+local win = ui:CreateWindow({Name = "Bac0n SB Script | By Bac0n_S1cripts",Icon = 0,LoadingTitle = "Loading",LoadingSubtitle = "",Theme = "Amethyst",DisableRayfieldPrompts = true,DisableBuildWarnings = true,ConfigurationSaving = {Enabled = true,FolderName = "Configs",FileName = "Default"},Discord = {Enabled = false,Invite = "noinvitelink",RememberJoins = true},KeySystem = false,KeySettings = {Title = "Untitled",Subtitle = "Key System",Note = "No method of obtaining the key is provided",FileName = "Key",SaveKey = true,GrabKeyFromSite = false,Key = {"Hello"}}})
+local mt = getrawmetatable(game)
+setreadonly(mt,false)
+mt.__call = function(o,...)
+    if tostring(o) == tostring(game.ReplicatedStorage.Ban) or tostring(o) == tostring(game.ReplicatedStorage.AdminGUI) or tostring(o) == tostring(game.ReplicatedStorage.WalkSpeedChanged) then return end
+    return o(...)
+end
+setreadonly(mt,true)
+local safepart = Instance.new("Part",workspace)
+safepart.Name = "Safe Spot"
+safepart.Size = Vector3.new(100,1,100)
+safepart.Position = Vector3.new(10000,10000,10000)
+safepart.Transparency = 0.95
+safepart.CanCollide = true
+safepart.Anchored = true
+safepart.Material = Enum.Material.Neon
+local Tabs = {
+    ["Main Tab"] = win:CreateTab("Main Tab"),
+    ["Change Log"] = win:CreateTab("Change Log"),
+}
+local locals = {
+    Slapple = false,
+    Pillow = false,
+    Brick = false,
+    CoolDown = false,
+    Tycoon = false,
+
+}
+local connections = {
+    Stun,
+
+}
+Tabs["Main Tab"]:CreateSection("Main Section")
+
+Tabs["Main Tab"]:CreateSection("Badges Section")
+Tabs["Main Tab"]:CreateButton({Name = "Elude And Counter Badges",Callback = function()
+    if not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,2146130728) or not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,2129871858) then
+        local teleportFunc = queueonteleport or queue_on_teleport
+        if teleportFunc then
+            teleportFunc([[if not game:IsLoaded() then game.Loaded:Wait() end repeat wait() until game.Players.LocalPlayer wait(3) local Time = 121 local player = game.Players.LocalPlayer local hrp = player.Character.HumanoidRootPart fireclickdetector(game.Workspace.CounterLever.ClickDetector) hrp.CFrame = CFrame.new(0,100,0) wait(0.2) hrp.Anchored = true for i = Time,1,-1 do game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub";Text = "Wait "..i.." Seconds To Get Both Gloves";Duration = 1}) wait(1) end hrp.Anchored = false wait(0.5) firetouchinterest(hrp,game.Workspace.Ruins.Elude.Glove,0) firetouchinterest(hrp,game.Workspace.Ruins.Elude.Glove,1) for _,v in pairs(workspace.Maze:GetDescendants()) do if v:IsA("ClickDetector") then fireclickdetector(v) end end]])
+            game:GetService("TeleportService"):Teleport(11828384869)
+        end
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Already Owned",Text = "You Already Have The Gloves",Duration = 10})
+    end
+end,})
+Tabs["Main Tab"]:CreateButton({Name = "FrostBite Badge",Callback = function()
+    if not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId, 1286358044443937) then
+        local teleportFunc = queueonteleport or queue_on_teleport or syn and syn.queue_on_teleport
+        if teleportFunc then
+            teleportFunc([[if not game:IsLoaded() then game.Loaded:Wait() end repeat wait() until game.Players.LocalPlayer game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-554,177,56) wait(0.7) for _,v in ipairs(game:GetService("Workspace"):GetDescendants()) do if v.ClassName == "ProximityPrompt" then v.HoldDuration = 0 end end wait(0.5) for _,v in ipairs(game:GetService("Workspace"):GetDescendants()) do if v.ClassName == "ProximityPrompt" then fireproximityprompt(v) end end]])
+            local servers = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/17290438723/servers/Public?limit=100")).data
+            for _,v in ipairs(servers) do
+                if v.playing == 0 then
+                    game:GetService("TeleportService"):TeleportToPlaceInstance(17290438723,v.id)
+                    return
+                end
+            end
+            game:GetService("TeleportService"):Teleport(17290438723)
+        end
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Already Owned",Text = "You Already Have The Glove",Duration = 10})
+    end
+end,})
+Tabs["Main Tab"]:CreateButton({Name = "Lamp Badge",Callback = function()
+    if not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,490455814138437) then
+        if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("entered") then
+            if game:GetService("Players").LocalPlayer.leaderstats.Glove.Value == "ZZZZZZZ" then
+                for i = 1,5 do
+                    game:GetService("ReplicatedStorage").nightmare:FireServer("LightBroken")
+                end
+            else
+                game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Error",Text = "You Do Not Have The Glove Equipped",Duration = 10})
+            end
+        else
+            game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0
+            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Error",Text = "You Have To Be In The Lobby",Duration = 10})
+        end
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Already Owned",Text = "You Already Have The Glove",Duration = 10})
+    end
+end,})
+Tabs["Main Tab"]:CreateButton({Name = "Iceskate Glove + Some Free Badges",Callback = function()
+    if not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,2906002612987222) or not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,2124760916) or not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,2124760907) or not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,2128220957) then
+        game:GetService("ReplicatedStorage").IceSkate:FireServer("Freeze")
+        fireclickdetector(workspace.Arena["default island"]["Rubber Ducky"].ClickDetector)
+        fireclickdetector(workspace.Lobby.Scene.knofe.ClickDetector)
+        fireclickdetector(workspace.Arena.island5.Orange.ClickDetector)
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Already Owned",Text = "You Already Have The Glove And The Badges",Duration = 10})
+    end
+end,})
+Tabs["Main Tab"]:CreateButton({Name = "Glovel Badge",Callback = function()
+    if not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,128402905805563) then
+        if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("entered") then
+            if game:GetService("Players").LocalPlayer.leaderstats.Glove.Value == "Extended" then
+                firetouchinterest(game:GetService("Players").LocalPlayer.Character:WaitForChild("Head"),workspace.Lobby.Teleport1.TouchInterest.Parent,0)
+                repeat task.wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("entered")
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(221.551926,26.9119072,189.210266,0.780314207,5.18699128e-09,-0.625387669,-2.00603374e-08,1,-1.67358198e-08,0.625387669,2.56046864e-08,0.780314207)
+                wait(0.2)
+                fireproximityprompt(workspace.Arena.CannonIsland.GlovelHoleInTheWall.ProximityPrompt,0)
+                repeat task.wait() game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(289,13,261) game:GetService("ReplicatedStorage").DigEvent:FireServer({["index"] = 2,["cf"] = CFrame.new(42.7222366,-6.17449856,91.5175781,-0.414533257,1.72594355e-05,-0.91003418,-5.57037238e-05,1,4.4339522e-05,0.91003418,6.90724992e-05,-0.414533257)}) until game.Workspace:FindFirstChild("TreasureChestFolder") ~= nil and game.Workspace.TreasureChestFolder:FindFirstChild("TreasureChest") ~= nil
+                wait(1)
+                game.Workspace.TreasureChestFolder.TreasureChest.OpenRemote:FireServer()
+                wait(0.9)
+                game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0
+            else
+                if game:GetService("Players").LocalPlayer.leaderstats.Slaps.Value >= 105 then
+                    fireclickdetector(workspace.Lobby.Extended.ClickDetector)
+                    firetouchinterest(game:GetService("Players").LocalPlayer.Character:WaitForChild("Head"),workspace.Lobby.Teleport1.TouchInterest.Parent,0)
+                    repeat task.wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("entered")
+                    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(221.551926,26.9119072,189.210266,0.780314207,5.18699128e-09,-0.625387669,-2.00603374e-08,1,-1.67358198e-08,0.625387669,2.56046864e-08,0.780314207)
+                    wait(0.2)
+                    fireproximityprompt(workspace.Arena.CannonIsland.GlovelHoleInTheWall.ProximityPrompt,0)
+                    repeat task.wait() game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(289,13,261) game:GetService("ReplicatedStorage").DigEvent:FireServer({["index"] = 2,["cf"] = CFrame.new(42.7222366,-6.17449856,91.5175781,-0.414533257,1.72594355e-05,-0.91003418,-5.57037238e-05,1,4.4339522e-05,0.91003418,6.90724992e-05,-0.414533257)}) until game.Workspace:FindFirstChild("TreasureChestFolder") ~= nil and game.Workspace.TreasureChestFolder:FindFirstChild("TreasureChest") ~= nil
+                    wait(1)
+                    game.Workspace.TreasureChestFolder.TreasureChest.OpenRemote:FireServer()
+                    wait(0.9)
+                    game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0
+                else
+                    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Error",Text = "You Do Not Have Enough Slaps For The Glove",Duration = 10})
+                end
+            end
+        else
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(221.551926,26.9119072,189.210266,0.780314207,5.18699128e-09,-0.625387669,-2.00603374e-08,1,-1.67358198e-08,0.625387669,2.56046864e-08,0.780314207)
+            wait(0.2)
+            fireproximityprompt(workspace.Arena.CannonIsland.GlovelHoleInTheWall.ProximityPrompt,0)
+            repeat task.wait() game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(289,13,261) game:GetService("ReplicatedStorage").DigEvent:FireServer({["index"] = 2,["cf"] = CFrame.new(42.7222366,-6.17449856,91.5175781,-0.414533257,1.72594355e-05,-0.91003418,-5.57037238e-05,1,4.4339522e-05,0.91003418,6.90724992e-05,-0.414533257)}) until game.Workspace:FindFirstChild("TreasureChestFolder") ~= nil and game.Workspace.TreasureChestFolder:FindFirstChild("TreasureChest") ~= nil
+            wait(1)
+            game.Workspace.TreasureChestFolder.TreasureChest.OpenRemote:FireServer()
+            wait(0.9)
+            game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid").Health = 0
+        end
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Already Owned",Text = "You Already Have The Glove",Duration = 10})
+    end
+end,})
+Tabs["Main Tab"]:CreateButton({Name = "Boxer Badge",Callback = function()
+    if not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,1223765330375569) then
+        local teleportFunc = queueonteleport or queue_on_teleport
+        if teleportFunc then
+            teleportFunc([[if not game:IsLoaded() then game.Loaded:Wait() end game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(16.444276809692383,48.599510192871094,7.211844444274902) task.wait(5) game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = workspace.BoxingGloves.CFrame fireclickdetector(workspace.BoxingGloves.ClickDetector)]])
+            game:GetService("TeleportService"):Teleport(7234087065)
+        end
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Already Owned",Text = "You Already Have The Glove",Duration = 10})
+    end
+end,})
+Tabs["Main Tab"]:CreateButton({Name = "Untitled Tag Glove Badge",Callback = function()
+    if not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,2223110832777636) then
+        local teleportFunc = queueonteleport or queue_on_teleport
+        if teleportFunc then
+            teleportFunc([[if not game:IsLoaded() then game.Loaded:Wait() end game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame+Vector3.new(0,1000,0)]])
+            game:GetService("TeleportService"):Teleport(115782629143468)
+        end
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Already Owned",Text = "You Already Have The Glove",Duration = 10})
+    end
+end,})
+Tabs["Main Tab"]:CreateToggle({Name = "Brick Master Badge",CurrentValue = false,Flag = "Brick Master Badge",Callback = function(v)
+    locals.Brick = v
+    local cframe
+    if v then
+        if not game:GetService("BadgeService"):UserHasBadgeAsync(game:GetService("Players").LocalPlayer.UserId,2127567042) then
+            if game:GetService("Players").LocalPlayer.leaderstats.Glove.Value == "Brick" then
+                cframe = game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+                game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = workspace["Safe Spot"].CFrame+Vector3.new(0,2,0)
+                while locals.Brick do
+                    game:GetService("ReplicatedStorage").lbrick:FireServer()
+                    game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text = tonumber(game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text)+1
+                    wait(1.73)
+                end
+            else
+                game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Error",Text = "You Do Not Have The Glove Equipped",Duration = 10})
+            end
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Already Owned",Text = "You Already Have The Glove",Duration = 10})
+        end
+    elseif cframe then
+        game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = cframe
+    end
+end,})
+Tabs["Main Tab"]:CreateSection("Auto Section")
+Tabs["Main Tab"]:CreateToggle({Name = "Farm Slapples",CurrentValue = false,Flag = "Farm Slapples",Callback = function(c)
+    locals.Slapple = c
+    if c then
+        while locals.Slapple do
+            for _,v in ipairs(workspace.Arena.island5.Slapples:GetChildren()) do
+                if v:FindFirstChild("Glove") and v.Glove.Transparency ~= 1 then
+                    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart,v.Glove,0)
+                    task.wait()
+                end
+            end
+            task.wait()
+        end
+    end
+end,})
+Tabs["Main Tab"]:CreateToggle({Name = "Gain Pillow Points",CurrentValue = false,Flag = "Gain Pillow Points",Callback = function(v)
+    locals.Pillow = v
+    if v then
+      while locals.Pillow and task.wait() do
+          game:GetService("ReplicatedStorage").Events.PillowEvent:FireServer("AddPillow")
+      end
+    end
+end,})
+Tabs["Main Tab"]:CreateToggle({Name = "Auto Click Tycoon",CurrentValue = false,Flag = "Gain Pillow Points",Callback = function(v)
+    locals.Tycoon = v
+    if v then
+        while locals.Tycoon and task.wait() do
+            fireclickdetector(workspace["\195\133Tycoon"..game:GetService("Players").LocalPlayer.Name].Click.ClickDetector)
+        end
+    end
+end,})
+Tabs["Main Tab"]:CreateButton({Name = "Boxer Slap Farmer {DonjoScripts} [Fast]",Callback = function()
+    DurationTimeSHOP = math.huge
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/DonjoScripts/Public-Scripts/refs/heads/Slap-Battles/Boxer-slap-farm"))()
+end,})
+Tabs["Main Tab"]:CreateSection("Troll Section")
+Tabs["Main Tab"]:CreateToggle({Name = "Stun Aura",CurrentValue = false,Flag = "Stun Aura",Callback = function(c)
+    if game:GetService("Players").LocalPlayer.leaderstats.Glove.Value == "Untitled Tag Glove" then
+        if c then
+            connections.Stun = game:GetService("RunService").RenderStepped:Connect(function()
+                for _,v in ipairs(game:GetService("Players"):GetPlayers()) do
+                    if v ~= game:GetService("Players").LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") and (v.Character.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                        game:GetService("ReplicatedStorage").UTGGeneric:FireServer("enableRunMode")
+                        game:GetService("ReplicatedStorage").UTGGeneric:FireServer("slideStun",v.Character)
+                    end
+                end
+            end)
+    else if connections.Stun then
+            connections.Stun:Disconnect() connections.Stun = nil
+        end
+    end
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Nyx Hub | Error",Text = "You Do Not Have The Glove Equipped",Duration = 10})
+    end
+end,})
+Tabs["Main Tab"]:CreateButton({Name = "No CD/CoolDown",Callback = function(v)
+    while game:GetService("Players").LocalPlayer.Character.Humanoid.Health ~= 0 do
+        local cd = game.Players.LocalPlayer.Backpack:FindFirstChildOfClass("Tool") or game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        if cd then
+            local c = cd:FindFirstChildOfClass("LocalScript")
+            if c then
+                local clone = c:Clone()
+                c:Destroy()
+                clone.Parent = cd
+            end
+        end
+        wait(0.1)
+    end
+end,})
+Tabs["Main Tab"]:CreateButton({Name = "Invisibility",Callback = function()
+    if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("entered") then
+        if game:GetService("Players").LocalPlayer.leaderstats.Glove.Value == "Ghost" then
+            game:GetService("ReplicatedStorage"):WaitForChild("Ghostinvisibilityactivated"):FireServer()
+        elseif game:GetService("Players").LocalPlayer.leaderstats.Slaps.Value >= 666 then
+            fireclickdetector(workspace.Lobby.Ghost.ClickDetector)
+            game:GetService("ReplicatedStorage"):WaitForChild("Ghostinvisibilityactivated"):FireServer()
+            fireclickdetector(workspace.Lobby[game:GetService("Players").LocalPlayer.leaderstats.Glove.Value].ClickDetector)
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Nyx Hub | Error", Text = "You Do Not Have Enough Slaps For The Glove", Duration = 10})
+        end
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Nyx Hub | Error", Text = "You Have To Be In The Lobby", Duration = 10})
+    end
+end,})
+
+Tabs["Change Log"]:CreateSection("Info Section")
+Tabs["Change Log"]:CreateParagraph({Title = "Change Logs",Content = "Updated The Glovel And The Brick And Added The Rest Of The Promised Stuff"})
